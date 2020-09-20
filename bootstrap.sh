@@ -1,8 +1,6 @@
 #!/bin/bash
-# Get user id
 USERID=$(id -u)
 
-# Verify that user is root
 if [[ "${USERID}" -eq 0 ]]
 then
   # Update Packages
