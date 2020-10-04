@@ -16,10 +16,10 @@ then
   # Install Curl
   apt-get install -y curl
   # Install NodeJS v14.x
-  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
   sudo apt-get install -y nodejs
-  # Install Node Version Manager v0.35.3
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  # Install Node Version Manager v0.36.0
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
   exit 0
 else
   echo "ERROR: user is not root"
