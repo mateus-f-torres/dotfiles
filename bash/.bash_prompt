@@ -76,7 +76,7 @@ function set_nodeenv () {
   if test -z "$node -v" ; then
     NODE_VERSION=""
   else
-    NODE_VERSION="${LIGHT_GREEN}[$(node -v)]${COLOR_NONE}"
+    NODE_VERSION="${LIGHT_GREEN}[nodejs $(node -v)]${COLOR_NONE}"
   fi
 }
 
