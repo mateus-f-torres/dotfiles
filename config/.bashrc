@@ -130,19 +130,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# set Atom theme toggle alias
-# better to have a toggle-dark-mode script
-alias terminal-dark='gnome-terminal --tab-with-profile="One Dark" && exit'
-alias terminal-light='gnome-terminal --tab-with-profile="One Light" && exit'
-# set Webstorm alias to use correct node env
-# alias webstorm='find $HOME/.local/share/JetBrains/ -executable -type f -name "webstorm.sh" -exec "{}" ";"'
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
-# Doom Emacs bin
-export PATH="$HOME/.emacs.d/bin:$PATH"
+# https://github.com/sharkdp/fd
+alias fd=fdfind
 
 # autojump
-. /usr/share/autojump/autojump.bash
+# . /usr/share/autojump/autojump.bash
+
+# Vim-Solarized8 https://github.com/lifepillar/vim-solarized8
+sh ~/.vim/pack/themes/opt/solarized8/scripts/solarized8.sh 
 
 # always last line, get full custom prompt
 . ~/.bash_prompt
-
