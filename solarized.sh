@@ -6,17 +6,19 @@ vimrc="$HOME/.vimrc"
 taskrc="$HOME/.taskrc"
 tmuxrc="$HOME/.tmux.conf"
 
+current_hour="$(date -- +%k)"
+
 main() {
   if test $# -eq 0; then
-    # DONE: get system time
-    # TODO: get only hour segment "HH:mm:ss"
-    # TODO: setup light or dark theme based on it
-    system_time="$(date -- +%T)"
-    echo "$system_time"
+    if test $current_hour -gt 16; then
+      set_theme "dark" "black" "brightblue" "brightgreen"
+    else
+      set_theme "light" "white" "brightyellow" "brightcyan"
+    fi
   elif test $# -eq 1; then
     case "$1" in
       -h|--help)
-        echo "help"
+        echo "NO HELP FOR YOU"
         exit 0
         ;;
       -d|--dark)
