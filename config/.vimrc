@@ -1,21 +1,14 @@
 set nocompatible        " dont try to be vi
-
-" needed for Atom One theme
-set t_8f=[38;2;%lu;%lu;%lum
-set t_8b=[48;2;%lu;%lu;%lum
-if (has('termguicolors'))
-  set termguicolors
-endif
+set ff=unix             " see DOS's ^M
 
 " Colors {{{
-syntax enable           " enable syntax processing
-set t_Co=256
-colorscheme one
 set background=dark
+colorscheme solarized8_flat
+syntax enable           " enable syntax processing
 set laststatus=2        " make lightline visible
 set noshowmode	      	" disable default INSERT text
 let g:lightline = {	
-  \ 'colorscheme': 'one',
+  \ 'colorscheme': 'solarized',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly',  'filename', 'modified' ] ],
@@ -51,18 +44,17 @@ filetype plugin on    	" load filetype-specific plugin files
 set number              " show line numbers
 set showcmd             " show typed command in bottom right bar
 set wildmenu	        " visual autocomplete for command menu
-" TAB to go forwards and Shft + TAB to go backwards in autocomplete
 set lazyredraw	      	" redraw only when we need to
 " }}}
 
 " Searching {{{
 " Files
-set path+=src/**            " search every subfolder
-" :find Component.*     " fuzzy find every match
-" :b [file.substring]   " open matching file from buffer, can fuzzy too
+set path+=src/**        " search every subfolder
 set incsearch           " search as characters are entered
 set hlsearch            " highlight all matches
-" set ignorecase          " ignore case when searching
+set ignorecase          " ignore case when searching
+" :find Component.*     " fuzzy find every match
+" :b [file.substring]   " open matching file from buffer, can fuzzy too
 " }}}
 
 " Tags Jumping {{{
@@ -173,11 +165,10 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 function! ToggleTheme()
   let &background = ( &background == "dark"? "light" : "dark" )
   if exists("g:lightline")
-    runtime autoload/lightline/colorscheme/one.vim
+    runtime autoload/lightline/colorscheme/solarized.vim
     call lightline#colorscheme()
   endif
 endfunction
-
 map <F12> :call ToggleTheme()<CR>
 
 " EditorConfig

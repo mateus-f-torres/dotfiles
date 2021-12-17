@@ -20,6 +20,7 @@
 #   https://gist.github.com/31967
 
 # The various escape codes that we can use to color our prompt.
+# TODO: change pallete and remove duplicates (RED == LIGHT_RED)
         RED="\[\033[0;31m\]"
      YELLOW="\[\033[1;33m\]"
       GREEN="\[\033[0;32m\]"
@@ -72,18 +73,23 @@ function set_git_branch {
   BRANCH="${state}(${branch}) ${remote}${COLOR_NONE}"
 }
 
+# TODO: verify if current version matches .nvmrc when present
 function set_nodeenv () {
-  if test -z "$node -v" ; then
-    NODE_VERSION=""
-  else
+  if test "$node -v" ; then
     NODE_VERSION="${LIGHT_GREEN}[nodejs $(node -v)]${COLOR_NONE}"
+  else
+    NODE_VERSION="${RED}[NODE NOT INSTALLED]${COLOR_NONE}"
   fi
 }
 
 # Set the full bash prompt.
+# TODO: keep empty [] and maybe add something?
+# TODO: make it work with python, java, c, etc.
 function set_bash_prompt () {
   # set_virtualenv
-  set_nodeenv
+  if test -e ".nvmrc" || test "$node -v"; then
+    set_nodeenv
+  fi
 
   # Set the BRANCH variable.
   if is_git_repository ; then
